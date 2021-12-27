@@ -1,7 +1,7 @@
 <?php
 namespace App\models;
 use \Firebase\JWT\JWT;
-use App\libs\Almacen;
+use App\libs\Model;
 
 class Usuario extends Model
 {

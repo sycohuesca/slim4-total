@@ -1,5 +1,5 @@
 <?php
-namespace App\models;
+namespace App\libs;
 use App\libs\Almacen;
 
   class Model
@@ -12,7 +12,6 @@ use App\libs\Almacen;
              }
              
        private function  init(){
-
         $camposCreate=implode(", ",$this->campos);
         foreach ($this->campos as $key ) {
             $camposValue[]=":".$key;
@@ -28,11 +27,11 @@ use App\libs\Almacen;
        }      
             
       function getAll($request, $response)
-    {
+    {       
         $consulta= new Almacen();
-        $data=$consulta->query($this->sqlSelect);
+        $data= $consulta->query($this->sqlSelect);
         $response->getBody()->write(json_encode($data));
-        return $response->withStatus(200);
+        return $response->withStatus(200);  
     }
     
      function create($request, $response, $args)
