@@ -25,7 +25,7 @@ $app->get('/login', Usuario::class.':login');
 
 
 $app->group('/users', function ($group) {
-    $group->get('', Usuario::class.':getAll');
+    $group->get('', Usuario::class . ':getAll');
     $group->get('/{id}', Usuario::class . ':find');
     $group->post('', Usuario::class . ':create');
     $group->put('/{id}', Usuario::class . ':update');
