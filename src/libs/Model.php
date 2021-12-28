@@ -1,6 +1,6 @@
 <?php
 namespace App\libs;
-use App\libs\Almacen;
+use App\libs\Db;
 
   class Model
 {
@@ -28,7 +28,7 @@ use App\libs\Almacen;
             
       function getAll($request, $response)
     {       
-        $consulta= new Almacen();
+        $consulta= new Db();
         $data= $consulta->query($this->sqlSelect);
         $response->getBody()->write(json_encode($data));
         $consulta->closeConnection();
@@ -38,7 +38,7 @@ use App\libs\Almacen;
      function create($request, $response, $args)
     {
         $body = $request->getParsedBody();
-        $consulta= new Almacen();
+        $consulta= new Db();
         $data = $consulta->query($this->sqlCreate, $body);
         $response->getBody()->write(json_encode($data));
         $consulta->closeConnection();
@@ -48,7 +48,7 @@ use App\libs\Almacen;
      function update ($request, $response, $args){
         $body = $request->getParsedBody();
         $body['id']=$args['id'];
-        $consulta= new Almacen();
+        $consulta= new Db();
         $data = $consulta->query($this->sqlUpdate, $body);
         $response->getBody()->write(json_encode($data));
         $consulta->closeConnection();
@@ -57,7 +57,7 @@ use App\libs\Almacen;
 
      function find($request, $response, $args)
     {
-        $consulta=new Almacen();
+        $consulta=new Db();
         $datos = array("id"=>$args['id']);
         $data = $consulta->query($this->sqlFind, $datos);    
         $response->getBody()->write(json_encode($data));
@@ -67,7 +67,7 @@ use App\libs\Almacen;
     }
      function delete($request, $response, $args)
     {
-        $consulta=new Almacen();
+        $consulta=new Db();
         $datos = array("id"=>$args['id']);
         $data = $consulta->query($this->sqlDelete, $datos);    
         $response->getBody()->write(json_encode($data));

@@ -9,7 +9,7 @@ use \PDO;
  */
 
 
-class Almacen
+class Db
 {
     private $pdo;
     private $sSQL;

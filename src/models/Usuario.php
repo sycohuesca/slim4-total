@@ -14,7 +14,7 @@ class Usuario extends Model
          "unidad",
          "email"
      );
-
+// Funciones extra
      function login($request, $response,  $args){
         $carga = array(
             "iss" => "http://example.org",
