@@ -26,9 +26,13 @@ class Usuario extends Model
         $token=JWT::encode($carga, $_ENV['SECRET']);
          $response->getBody()->write(json_encode(['token'=>$token]));
         return $response;
-
      }
-
+     
+     function check($request, $response,  $args){
+         $token=$request->getAttribute('token');
+         $response->getBody()->write(json_encode(['token'=>$token]));
+         return $response;
+     }
 
 }
 ?>

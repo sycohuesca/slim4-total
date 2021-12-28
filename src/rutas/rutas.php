@@ -1,28 +1,15 @@
 <?php
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
+
 use App\models\Usuario;
 use App\midelwares\Auth;
-use App\midelwares\Cors;
 
 
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
-// Cambiar a false en produccion
-$app->addErrorMiddleware(true, true, true);
-$app->add(new Cors());
-
-
-
-
-
-
-$app->get('/', function (Request $request, Response $response, $args) {
+$app->get('/', function ( $request,  $response, $args) {
     $response->getBody()->write("hello world!");
     return $response;
 });
 $app->get('/login', Usuario::class.':login');
-
+$app->get('/check', Usuario::class.':check')->add(new Auth());
 
 $app->group('/users', function ($group) {
     $group->get('', Usuario::class . ':getAll');

@@ -31,6 +31,7 @@ use App\libs\Almacen;
         $consulta= new Almacen();
         $data= $consulta->query($this->sqlSelect);
         $response->getBody()->write(json_encode($data));
+        $consulta->closeConnection();
         return $response->withStatus(200);  
     }
     
@@ -40,6 +41,7 @@ use App\libs\Almacen;
         $consulta= new Almacen();
         $data = $consulta->query($this->sqlCreate, $body);
         $response->getBody()->write(json_encode($data));
+        $consulta->closeConnection();
         return $response->withStatus(201);
     }
 
@@ -49,6 +51,7 @@ use App\libs\Almacen;
         $consulta= new Almacen();
         $data = $consulta->query($this->sqlUpdate, $body);
         $response->getBody()->write(json_encode($data));
+        $consulta->closeConnection();
         return $response->withStatus(201);
     }
 
@@ -58,6 +61,7 @@ use App\libs\Almacen;
         $datos = array("id"=>$args['id']);
         $data = $consulta->query($this->sqlFind, $datos);    
         $response->getBody()->write(json_encode($data));
+        $consulta->closeConnection();
         return $response->withStatus(200);
         
     }
@@ -67,6 +71,7 @@ use App\libs\Almacen;
         $datos = array("id"=>$args['id']);
         $data = $consulta->query($this->sqlDelete, $datos);    
         $response->getBody()->write(json_encode($data));
+        $consulta->closeConnection();
         return $response->withStatus(200);                
     }
    
