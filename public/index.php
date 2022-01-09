@@ -14,6 +14,7 @@ $app->addRoutingMiddleware();
 $app->addErrorMiddleware(true, true, true);
 $app->add(new App\midelwares\Cors());
 
-require_once __DIR__ . ('/../src/rutas/rutas.php');
+$routers=require __DIR__ . ('/../src/rutas/rutas.php');
+$routers($app);
 
 $app->run();

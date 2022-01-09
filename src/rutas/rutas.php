@@ -3,6 +3,7 @@
 use App\models\Usuario;
 use App\midelwares\Auth;
 
+return function($app){
 
 $app->get('/', function ( $request,  $response, $args) {
     $response->getBody()->write("hello world!");
@@ -47,6 +48,7 @@ try {
              ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
       
  });
+}
 
 
 
